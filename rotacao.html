@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+  <title>Rotação</title>
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      background-color: #222;
+      margin: 0;
+      height: 440;
+      width: 100%;
+      align-content: center;
+      display: flex;
+    }
+
+    .bolinha {
+      width: 200px;
+      height: 200px;
+      display: inline-block;
+      margin: 0;
+      border-radius: 50%;
+      border: dotted 7px darkorange;
+      box-shadow: inset 5px 0px 3px 0px rgba(255, 255, 255, 0.5);
+
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0)25%, rgba(255, 255, 255, .2) 40%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)70%);
+
+    }
+
+    #q0 {
+      background-color: blue;
+      float: left;
+    }
+
+    #q1 {
+      background-color: red;
+      float: right;
+    }
+
+    #q2 {
+      background-color: green;
+      float: right;
+    }
+
+    #q3 {
+      background-color: yellow;
+      float: left;
+    }
+
+    /*.div1 { border: dashed 2px white; margin: 0;}*/
+
+    /*div:hover{
+        background-image: linear-gradient(to left, rgba(255,255,255,.1), rgba(255,255,255,.1) 49%, rgba(255,255,255,0) 50%, rgba(255,255,255,.4));
+      }*/
+    div:hover {
+      border: dotted 7px darkred;
+    }
+
+
+    .diagonal {
+      /* transform: rotate(45deg); */
+      /* margin: 200px 300px;*/
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="diagonal" style="background-color: aqua; width: 428px; height: 440px;">
+    <div class="bolinha" ></div>
+    <div class="bolinha" ></div>
+    <div class="bolinha" ></div>
+    <div class="bolinha" ></div>
+  </section><section style="background-color: blue; width: 428px; height: 440px;"></section>
+  </section>
+
+
+  <script>
+    let divs = document.querySelectorAll('div');
+    let cores = ['blue', 'red', 'green', 'yellow'];
+
+    divs.forEach((div, index) => {
+      div.style.backgroundColor = cores[index];
+      div.draggable = true;
+      div.id = div.id || `q${index}`;
+      div.ondragstart = e => e.dataTransfer.setData('item.id', e.target.id);
+    });
+
+    const section = document.querySelectorAll('section');
+    section.forEach(dropzone =>{
+      dropzone.ondragover = e => e.preventDefault();
+      dropzone.ondrop = function(e){
+        const id = e.dataTransfer.getData('item.id');
+        const item = document.getElementById(id);
+        e.target.appendChild(item);
+      }
+    })
+
+    setInterval(() => {
+      let corInicio = divs[divs.length - 1].style.backgroundColor;
+
+      for (let i = divs.length - 1; i >= 0; i--) {
+        if (i > 0)
+          divs[i].style.backgroundColor = divs[i - 1].style.backgroundColor;
+        else
+          divs[i].style.backgroundColor = corInicio;
+      }
+    }, 1000);
+  </script>
+</body>
+
+</html>
