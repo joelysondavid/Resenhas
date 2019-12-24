@@ -21,6 +21,15 @@ body {
   animation: animate 2s linear infinite;
 }
 
+.loader2 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent, transparent 40%, red);
+  animation: animate2 2s linear infinite;
+}
+
 @keyframes animate {
   0%
   {
@@ -29,6 +38,17 @@ body {
   100%
   {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes animate2 {
+  0%
+  {
+    transform: rotate(360deg);
+  }
+  100%
+  {
+    transform: rotate(0deg);
   }
 }
 
@@ -44,6 +64,18 @@ body {
   z-index: 1000;
 }
 
+.loader2:before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 1001;
+}
+
 .loader:after {
   content: '';
   position: absolute;
@@ -55,5 +87,19 @@ body {
   background: linear-gradient(45deg, transparent, transparent 40%, red);
   z-index: 1000;
   z-index: 1;
+  filter: blur(30px);
+}
+
+.loader2:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: #000;
+  background: linear-gradient(45deg, transparent, transparent 40%, red);
+  z-index: 1000;
+  z-index: 0;
   filter: blur(30px);
 }
