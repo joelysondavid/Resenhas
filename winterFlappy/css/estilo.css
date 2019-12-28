@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'Oswald';
-    src: url('../fonts/Oswald-Regular.ttf') format('truetype');
-}
-
 * {
     font-family: 'Oswald', sans-serif;
 }
@@ -13,11 +8,19 @@ html {
 
 body {
     margin: 0;
-    background-color: #0D262D;
+    background-color: #BFD9DC;
     color: #fff;
     height: 100%;
 }
 
+
+h1{
+    margin: 20px 0;
+    word-spacing: 18px;
+    letter-spacing: 2px;
+    padding-bottom: 10px;
+    font-family: 'Oswald';
+}
 .conteudo {
     display: flex;
     flex-direction: column;
