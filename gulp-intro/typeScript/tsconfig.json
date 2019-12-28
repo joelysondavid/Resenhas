@@ -1,0 +1,10 @@
+{
+    "files": [
+        "src/**/*.ts"
+    ],
+    "compilerOptions": {
+        "rootDir": "src",
+        "noImplicitAny": true, // essa propredade verifica se as variaveis no arquivo ts foram informadas
+        "target": "es5",
+    }
+}
