@@ -79,6 +79,7 @@ function Passaro(alturaGame) {
   let voando = false;
 
   this.elemento = novoElemento('img', 'noel');
+  // this.elemento.src = 'https://lh6.googleusercontent.com/-ASMBpwTDCPI/UMO9AP3i6UI/AAAAAAAAWws/4uXsqmqCV5c/s650/oie_glitters%2520%25286%2529.gif';
   this.elemento.src = 'imgs/trenó.png';
 
   this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0]);
@@ -178,32 +179,58 @@ function FlappyBird() {
 
 function setaCores() {
   let divs = document.querySelectorAll('div .par-de-barreiras');
-  let cores = ['blue', 'red', 'green', 'yellow'];
-
+  let quadroDiv = document.querySelector('[quadro]');
+  // let cores = ['blue', 'red', 'green', 'yellow'];
+  let cores = ['#BFD9DC', '#F8D5E0', '#BCE7D6', '#F3E6AD'];
+  let coresBorda = [ '#A0B5B8', '#f2a7bf', '#95B8AA', '#D4C896' ];
+  
   divs.forEach(
     (div, index) => {
       let corpos = div.querySelectorAll('.barreira .corpo');
       let bordas = div.querySelectorAll('.barreira .borda');
-      corpos.forEach(corpo => corpo.style.backgroundColor = cores[index]);
+      corpos.forEach(corpo => {
+        corpo.style.backgroundColor = cores[index]
+        corpo.style.border = '4px solid ' + coresBorda[index]
+      });
+      // corpos.forEach(corpo => 
       bordas.forEach(borda => borda.style.backgroundColor = cores[index]);
     }
   );
 
   setInterval(() => {
     let ultimaCor = divs[0].querySelector('.barreira .corpo').style.backgroundColor;
+    let ultimaCorBorder = divs[0].querySelector('.barreira .corpo').style.border;
+    // let quadroColor = quadroDiv.style.border;
 
     for (let i = 0; i < divs.length; i++) {
       let corpos = divs[i].querySelectorAll('.barreira .corpo');
       let bordas = divs[i].querySelectorAll('.barreira .borda');
-
+      
       if (i < divs.length - 1) {
         corpos.forEach(elemento => elemento.style.backgroundColor = divs[i + 1].querySelector('.barreira .corpo').style.backgroundColor);
         bordas.forEach(elemento => elemento.style.backgroundColor = divs[i + 1].querySelector('.barreira .corpo').style.backgroundColor);
+        corpos.forEach(elemento => elemento.style.border = divs[i + 1].querySelector('.barreira .corpo').style.border);
+        bordas.forEach(elemento => elemento.style.border = divs[i + 1].querySelector('.barreira .corpo').style.border);
       } else {
         corpos.forEach(elemento => elemento.style.backgroundColor = ultimaCor);
         bordas.forEach(elemento => elemento.style.backgroundColor = ultimaCor);
+        //change color for border
+        corpos.forEach(elemento => elemento.style.border = ultimaCorBorder);
+        bordas.forEach(elemento => elemento.style.border = ultimaCorBorder);
       }
     }
+
+    //i don't know what i'm doing    
+    for (let i = 0; i < coresBorda.length; i++) {
+      let ultimaCorQuadro = document.querySelector('[quadro]').style.border;
+      
+      if (i < coresBorda.length - 1 ){
+        quadroDiv.style.border = `5px dashed ${coresBorda[i + 1]}`
+      } else {
+        quadroDiv.style.border = ultimaCorQuadro
+      }
+    }
+    
 
 
   }, 1000);
