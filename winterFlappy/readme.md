@@ -11,7 +11,7 @@ Basta apertar **qualquer tecla** do teclado e o avatar irá pular
 * Abra o arquivo **index.html**
 * Comece a jogar!
 
-## Authors
+## Autores
 
 * **[Joelyson](https://github.com/joedav)** - *Initial work* - [WinterFlappy](https://github.com/joedav/Resenhas/tree/master/winterFlappy)
 * **[Luis Enrique](https://github.com/the-spanish-guy)**
