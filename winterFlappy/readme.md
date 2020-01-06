@@ -1,7 +1,7 @@
 # Winter Flappy
 Este jogo foi inspirado no famoso jogo 'Flappy Bird'
 
-![](C:\Users\luyo-\Documents\projetos\Resenhas\winterFlappy\imgs\apre.png)
+![](https://github.com/joedav/Resenhas/blob/master/winterFlappy/imgs/apre.png?raw=true)
 
 ## Iniciando
 A jogabilidade do jogo é simples!
