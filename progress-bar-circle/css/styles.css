@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(207, 115, 207);
+}
+
+.container {
+  display: flex;
+  width: 420px;
+  padding: 50px 0;
+  border-radius: 8px;
+  background: #FFF;
+  row-gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-progress {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  background: conic-gradient(rgb(105, 61, 105) 3.6deg, rgb(235, 207, 235) 0deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 300ms;
+  animation: progress;
+  /* animation-duration: 5s; */
+}
+
+.circular-progress::before {
+  content: "";
+  position: absolute;
+  height: 210px;
+  width: 210px;
+  border-radius: 50%;
+  background-color: #FFF;
+}
+
+.progress-value {
+  position: relative;
+  font-size: 40px;
+  font-weight: 600;
+  color: purple;
+}
+
+.text {
+  font-size: 30px;
+  font-weight: 500;
+  color: #606060;
+}
+
+@keyframes progress {
+  0% {
+    background: conic-gradient(rgb(105, 61, 105) 0deg, rgb(235, 207, 235) 0deg)
+  }
+
+  25% {
+    background: conic-gradient(rgb(105, 61, 105) 90deg, rgb(235, 207, 235) 0deg)
+  }
+
+  50% {
+    background: conic-gradient(rgb(105, 61, 105) 180deg, rgb(235, 207, 235) 0deg)
+  }
+
+  100% {
+    background: conic-gradient(rgb(105, 61, 105) 360deg, rgb(235, 207, 235) 0deg)
+  }
+}
